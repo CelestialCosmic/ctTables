@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries/>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :outsb </Description>
+      <AddressString>game.exe+4E54FE</AddressString>
+      <Before>
+        <Byte>64</Byte>
+        <Byte>51</Byte>
+        <Byte>59</Byte>
+        <Byte>38</Byte>
+        <Byte>6C</Byte>
+      </Before>
+      <Actual>
+        <Byte>6E</Byte>
+        <Byte>53</Byte>
+        <Byte>47</Byte>
+        <Byte>33</Byte>
+        <Byte>43</Byte>
+      </Actual>
+      <After>
+        <Byte>70</Byte>
+        <Byte>31</Byte>
+        <Byte>42</Byte>
+        <Byte>70</Byte>
+        <Byte>77</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>Info about this table:
+</Comments>
+</CheatTable>

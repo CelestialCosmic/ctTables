@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"无限建造（前提是先有一个）"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,40,CItem:Build+26)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rsi+000000D4],0000ffff
+
+exit:
+jmp returnhere
+
+CItem:Build+26:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+CItem:Build+26:
+mov [rsi+000000D4],eax
+//Alt: db 89 86 D4 00 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"无限资源（前提是先有一个）"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,20,CItem_ContentExtractor:Update01s+10a)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rax],0000ffff
+movsxd  rax,dword ptr [rbp-50]
+
+exit:
+jmp returnhere
+
+CItem_ContentExtractor:Update01s+10a:
+jmp newmem
+nop 2
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+CItem_ContentExtractor:Update01s+10a:
+mov [rax],cx
+movsxd  rax,dword ptr [rbp-50]
+//Alt: db 66 89 08 48 63 45 B0
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"提升提取器产出"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,20,CDrone:ChangeState_ReturningHome+3f)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+add [rax],000000ff
+test rsi,rsi
+
+exit:
+jmp returnhere
+
+CDrone:ChangeState_ReturningHome+3f:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+CDrone:ChangeState_ReturningHome+3f:
+mov [rax],ecx
+test rsi,rsi
+//Alt: db 89 08 48 85 F6
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"提升工厂、装配厂产出"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,20,CItem_ContentFactory:ProcessStock+c8)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+add [rax+000000D4],16
+
+exit:
+jmp returnhere
+
+CItem_ContentFactory:ProcessStock+c8:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+CItem_ContentFactory:ProcessStock+c8:
+mov [rax+000000D4],ecx
+//Alt: db 89 88 D4 00 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"城市发展不需要资源"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,CStack:AddIFP+77) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [r14+10],2
+
+exit:
+jmp returnhere
+
+CStack:AddIFP+77:
+jmp newmem
+nop 3
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+CStack:AddIFP+77:
+mov [r14+10],ebx
+movsxd  rax,dword ptr [rdi+10]
+//Alt: db 41 89 5E 10 48 63 47 10
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"城市发展不需要资源"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,CDrone:ChangeState_ReturningHome+3f) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rax],00000003
+
+exit:
+jmp returnhere
+
+CDrone:ChangeState_ReturningHome+3f:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+CDrone:ChangeState_ReturningHome+3f:
+mov [rax],ecx
+test rsi,rsi
+//Alt: db 89 08 48 85 F6
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

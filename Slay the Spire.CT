@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"血量"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+alloc(newmem,2048,Lcom/megacrit/cardcrawl/characters/AbstractPlayer::damage+4EFC) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rdx+40],ffff
+cmp ebx,00
+
+exit:
+jmp returnhere
+
+Lcom/megacrit/cardcrawl/characters/AbstractPlayer::damage+4EFC:
+jmp newmem
+nop
+returnhere:
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"失去格挡"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+alloc(newmem,2048,Lcom/megacrit/cardcrawl/core/AbstractCreature::loseBlock+AF) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+add [rax],al
+add [rax],al
+jne Lcom/megacrit/cardcrawl/core/AbstractCreature::loseBlock+CC
+
+exit:
+jmp returnhere
+
+Lcom/megacrit/cardcrawl/core/AbstractCreature::loseBlock+AF:
+jmp newmem
+nop
+returnhere:
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"获得格挡"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,Lcom/megacrit/cardcrawl/core/AbstractCreature::addBlock+1631) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rdx+48],ffff
+cmp esi,63
+
+exit:
+jmp returnhere
+
+Lcom/megacrit/cardcrawl/core/AbstractCreature::addBlock+1631:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+Lcom/megacrit/cardcrawl/core/AbstractCreature::addBlock+1631:
+db 89 72 48 83 FE 63
+//mov [rdx+48],esi
+//cmp esi,63
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"通用数值改变"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,Interpreter+21806) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rcx+rbx],eax
+test edx,edx
+
+exit:
+jmp returnhere
+
+Interpreter+21806:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+Interpreter+21806:
+db 89 04 19 85 D2
+//mov [rcx+rbx],eax
+//test edx,edx
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"能量（非初始化）"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,Lcom/megacrit/cardcrawl/core/EnergyManager::recharge+C1A) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rdi+00000084],f
+
+exit:
+jmp returnhere
+
+Lcom/megacrit/cardcrawl/core/EnergyManager::recharge+C1A:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+Lcom/megacrit/cardcrawl/core/EnergyManager::recharge+C1A:
+db 89 B7 84 00 00 00
+//mov [rdi+00000084],esi
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
